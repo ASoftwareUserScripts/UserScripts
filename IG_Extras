@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  try to take over the world!
-// @author       You
+// @author       QuinnLee
 // @match        https://azshared.agatesoftware.com/*
 // @match        http://localhost:50963/*
 // @grant        none
