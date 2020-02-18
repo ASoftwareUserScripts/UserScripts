@@ -1,0 +1,125 @@
+// ==UserScript==
+// @name         Add Button
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://azshared.agatesoftware.com/*
+// @match        http://localhost:50963/*
+// @grant        none
+// ==/UserScript==
+
+
+var txtGoToObject = document.createElement("INPUT");
+(
+
+    function() {
+
+        'use strict';
+//         if (!window.location.href.includes('&thx=1138')) {
+//             window.location.href = window.location.href + '&thx=1138';
+//         };//true
+
+        if (window.location.href.includes('PasswordExpired=1')) {
+            window.location.href = window.location.href.replace('PasswordExpired=1', '');
+        };
+
+        var btnAddSave = document.createElement("Button");
+        btnAddSave.innerHTML = "Save Page";
+        btnAddSave.style = "Bottom:10px;right:110px;position:fixed;background-Color:Pink;border-radius: 5px;";
+        btnAddSave.addEventListener ("click", AddSaveURL, false);
+        document.body.appendChild(btnAddSave);
+
+        var btnAddDebug = document.createElement("Button");
+        btnAddDebug.innerHTML = "Debug Page";
+        btnAddDebug.style = "Bottom:10px;right:10px;position:fixed;background-Color:Pink;border-radius: 5px;";
+        btnAddDebug.addEventListener ("click", AddDebugURL, false);
+        document.body.appendChild(btnAddDebug);
+
+        var btnQuickLogin = document.createElement("Button");
+        btnQuickLogin.innerHTML = "Quick Login";
+        btnQuickLogin.style = "Bottom:10px;right:200px;position:fixed;background-Color:Pink;border-radius: 5px;";
+        btnQuickLogin.addEventListener ("click", QuickLoginURL, false);
+        document.body.appendChild(btnQuickLogin);
+
+        var btnGoToObject = document.createElement("Button");
+        btnGoToObject.innerHTML = "Go To Object";
+        btnGoToObject.style = "Bottom:10px;right:300px;position:fixed;background-Color:Pink;border-radius: 5px;";
+        btnGoToObject.addEventListener ("click", GoToObject, false);
+        document.body.appendChild(btnGoToObject);
+
+        txtGoToObject.setAttribute("type", "text");
+        txtGoToObject.style = "Bottom:10px;right:400px;position:fixed;background-Color:Pink;border-radius: 5px;";
+        document.body.appendChild(txtGoToObject);
+
+        var btnLogOut = document.createElement("Button");
+        btnLogOut.innerHTML = "Logout";
+        btnLogOut.style = "Bottom:40px;right:10px;position:fixed;background-Color:Pink;border-radius: 5px;";
+        btnLogOut.addEventListener ("click", LoutOutURL, false);
+        document.body.appendChild(btnLogOut);
+
+        var btnPCVIDToolTips = document.createElement("Button");
+        btnPCVIDToolTips.innerHTML = "PCV IDs";
+        btnPCVIDToolTips.style = "Bottom:40px;right:80px;position:fixed;background-Color:Pink;border-radius: 5px;";
+        btnPCVIDToolTips.addEventListener ("click", pcvToolTip, false);
+        document.body.appendChild(btnPCVIDToolTips);
+    }
+
+
+
+
+
+)();
+
+function AddSaveURL() {
+    if (!window.location.href.includes('&thx=1138')) {
+        window.location.href = window.location.href + '&thx=1138';
+    };
+
+}
+
+function AddDebugURL() {
+    if (!window.location.href.includes('&showdebug=1')) {
+        window.location.href = window.location.href + '&showdebug=1';
+    }
+}
+
+function QuickLoginURL() {
+    var pathArray = window.location.pathname.split('/');
+    var secondLevelLocation = pathArray[1];
+    window.location.href = "/" + secondLevelLocation +"/admin/quicklogin2.aspx";
+}
+
+function LoutOutURL() {
+    var pathArray = window.location.pathname.split('/');
+    var secondLevelLocation = pathArray[1];
+    window.location.href = "/" + secondLevelLocation +"/login2.aspx";
+}
+
+function GoToObject() {
+    var pathArray = window.location.pathname.split('/');
+    var secondLevelLocation = pathArray[1];
+    window.location.href = "/" + secondLevelLocation +"/Menu_Object2.aspx?objID="+txtGoToObject.value;
+}
+
+function pcvToolTip() {
+    var inputs = document.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i += 1) {
+        inputs[i].title = inputs[i].id;
+    }
+
+    var textareas = document.getElementsByTagName('textarea');
+    for (i = 0; i < textareas.length; i += 1) {
+        textareas[i].title = textareas[i].id;
+    }
+
+    var spans = document.getElementsByTagName('span');
+    for (i = 0; i < spans.length; i += 1) {
+        spans[i].title = spans[i].id;
+    }
+
+    var selects = document.getElementsByTagName('select');
+    for (i = 0; i < selects.length; i += 1) {
+        selects[i].title = selects[i].id;
+    }
+}
