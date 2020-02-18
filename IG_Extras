@@ -5,6 +5,8 @@
 // @description  try to take over the world!
 // @author       QuinnLee
 // @match        https://azshared.agatesoftware.com/*
+// @match        https://shared.agatesoftware.com/*
+// @match        https://demo.agatesoftware.com/*
 // @match        http://localhost:50963/*
 // @grant        none
 // ==/UserScript==
