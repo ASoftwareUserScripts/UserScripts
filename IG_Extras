@@ -33,7 +33,12 @@ var txtGoToObject = document.createElement("INPUT");
         document.body.appendChild(btnAddSave);
 
         var btnAddDebug = document.createElement("Button");
-        btnAddDebug.innerHTML = "Debug Page";
+        if (!window.location.href.includes('&showdebug=1')) {
+            btnAddDebug.innerHTML = "Debug Page";
+        } else{
+            btnAddDebug.innerHTML = "End Debug";
+        }
+
         btnAddDebug.style = "Bottom:10px;right:10px;position:fixed;background-Color:Pink;border-radius: 5px;";
         btnAddDebug.addEventListener ("click", AddDebugURL, false);
         document.body.appendChild(btnAddDebug);
@@ -83,6 +88,8 @@ function AddSaveURL() {
 function AddDebugURL() {
     if (!window.location.href.includes('&showdebug=1')) {
         window.location.href = window.location.href + '&showdebug=1';
+    }else{
+        window.location.href = window.location.href.replace('&showdebug=1','');
     }
 }
 
