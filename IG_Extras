@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add Button
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.1
 // @description  Making IG a little better :)
 // @author       QuinnLee
 // @match        https://azshared.agatesoftware.com/*
@@ -28,13 +28,13 @@ var txtGoToObject = document.createElement("INPUT");
 
         var btnShowButtons = document.createElement("Button");
         btnShowButtons.innerHTML = "+";
-        btnShowButtons.style = "Bottom:5px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; border-style: solid; color: white; font-size: 20px; border-color: black; width: 30px; height: 30px; vertical-align: middle;";
+        btnShowButtons.style = "Bottom:5px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; border-style: solid; color: white; font-size: 20px; border-color: black; width: 30px; height: 30px; vertical-align: middle; ";
         btnShowButtons.addEventListener ("click", ShowButtons, false);
         document.body.appendChild(btnShowButtons);
 
         var btnAddSave = document.createElement("Button");
         btnAddSave.innerHTML = "Save Page";
-        btnAddSave.style = "Bottom:40px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; visibility:hidden; border-style: solid; color: white; width:100px; border-color: black; height: 25px;";
+        btnAddSave.style = "Bottom:40px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; visibility:hidden; border-style: solid; color: white; width:100px; border-color: black; height: 25px; font-size: 13.3333px;";
         btnAddSave.addEventListener ("click", AddSaveURL, false);
         btnAddSave.setAttribute("id", "btnAddSave");
         document.body.appendChild(btnAddSave);
@@ -47,7 +47,7 @@ var txtGoToObject = document.createElement("INPUT");
             btnAddDebug.innerHTML = "End Debug";
         }
         btnAddDebug.setAttribute("tag", "btnIGOverlay");
-        btnAddDebug.style = "Bottom:70px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; visibility:hidden; border-style: solid; color: white; width:100px; border-color: black; height: 25px;";
+        btnAddDebug.style = "Bottom:70px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; visibility:hidden; border-style: solid; color: white; width:100px; border-color: black; height: 25px; font-size: 13.3333px;";
         btnAddDebug.addEventListener ("click", AddDebugURL, false);
         btnAddDebug.setAttribute("id", "btnAddDebug");
         document.body.appendChild(btnAddDebug);
@@ -55,33 +55,33 @@ var txtGoToObject = document.createElement("INPUT");
         var btnQuickLogin = document.createElement("Button");
         btnQuickLogin.innerHTML = "Quick Login";
         btnQuickLogin.setAttribute("id", "btnQuickLogin");
-        btnQuickLogin.style = "Bottom:100px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px;";
+        btnQuickLogin.style = "Bottom:100px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
         btnQuickLogin.addEventListener ("click", QuickLoginURL, false);
         document.body.appendChild(btnQuickLogin);
 
         var btnGoToObject = document.createElement("Button");
         btnGoToObject.innerHTML = "Go To Object";
-        btnGoToObject.style = "Bottom:190px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px;";
+        btnGoToObject.style = "Bottom:190px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
         btnGoToObject.addEventListener ("click", GoToObject, false);
         btnGoToObject.setAttribute("id", "btnGoToObject");
         document.body.appendChild(btnGoToObject);
 
         txtGoToObject.setAttribute("type", "text");
-        txtGoToObject.style = "Bottom:220px;right:5px; position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:98px;border-color: black; height: 25px; text-align: center;";
+        txtGoToObject.style = "Bottom:220px;right:5px; position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
         txtGoToObject.setAttribute("id", "txtGoToObject");
         document.body.appendChild(txtGoToObject);
 
         var btnLogOut = document.createElement("Button");
         btnLogOut.innerHTML = "Logout";
         btnLogOut.setAttribute("id", "btnLogOut");
-        btnLogOut.style = "Bottom:130px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px;";
+        btnLogOut.style = "Bottom:130px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
         btnLogOut.addEventListener ("click", LoutOutURL, false);
         document.body.appendChild(btnLogOut);
 
         var btnPCVIDToolTips = document.createElement("Button");
         btnPCVIDToolTips.innerHTML = "PCV IDs";
         btnPCVIDToolTips.setAttribute("id", "btnPCVIDToolTips");
-        btnPCVIDToolTips.style = "Bottom:160px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px;";
+        btnPCVIDToolTips.style = "Bottom:160px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
         btnPCVIDToolTips.addEventListener ("click", pcvToolTip, false);
         document.body.appendChild(btnPCVIDToolTips);
     }
