@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add Button
 // @namespace    http://tampermonkey.net/
-// @version      3.5
+// @version      3.6
 // @description  Making IG and IGX a little better :)
 // @author       QuinnLee
 // @match        https://azshared.agatesoftware.com/*
@@ -323,8 +323,11 @@ function EditForm() {
 
     var pathArray = window.location.pathname.split('/');
     var secondLevelLocation = pathArray[1];
-
-    window.open("/FormBuilder/Index?pageGUID="+ pgeGUID + "&omnID=" + omnID,'_blank');
+    if(isLocalHost){
+        window.open("/FormBuilder/Index?pageGUID="+ pgeGUID + "&omnID=" + omnID,'_blank');
+    }else{
+        window.open("/" + secondLevelLocation + "/FormBuilder/Index?pageGUID="+ pgeGUID + "&omnID=" + omnID,'_blank');
+    }
 
 
 
