@@ -67,7 +67,7 @@ var isDocumentForm = window.location.href.includes("DocumentForm");
         if (!isIGX && !isLocalHost) {
 
             btnAddSave.innerHTML = "Save Page";
-            btnAddSave.style = "Bottom:40px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px; border-color: black; height: 25px; font-size: 13.3333px;";
+            btnAddSave.style = "Bottom:40px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px; border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnAddSave.addEventListener ("click", AddSaveURL, false);
             btnAddSave.setAttribute("id", "btnAddSave");
             document.body.appendChild(btnAddSave);
@@ -80,7 +80,7 @@ var isDocumentForm = window.location.href.includes("DocumentForm");
                 btnAddDebug.innerHTML = "End Debug";
             }
             btnAddDebug.setAttribute("tag", "btnIGOverlay");
-            btnAddDebug.style = "Bottom:70px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px; border-color: black; height: 25px; font-size: 13.3333px;";
+            btnAddDebug.style = "Bottom:70px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px; border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnAddDebug.addEventListener ("click", AddDebugURL, false);
             btnAddDebug.setAttribute("id", "btnAddDebug");
             document.body.appendChild(btnAddDebug);
@@ -88,67 +88,67 @@ var isDocumentForm = window.location.href.includes("DocumentForm");
 
             btnQuickLogin.innerHTML = "Quick Login";
             btnQuickLogin.setAttribute("id", "btnQuickLogin");
-            btnQuickLogin.style = "Bottom:100px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnQuickLogin.style = "Bottom:100px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnQuickLogin.addEventListener ("click", QuickLoginURL, false);
             document.body.appendChild(btnQuickLogin);
 
 
             btnGoToObject.innerHTML = "Go To Object";
-            btnGoToObject.style = "Bottom:190px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnGoToObject.style = "Bottom:190px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnGoToObject.addEventListener ("click", GoToObject, false);
             btnGoToObject.setAttribute("id", "btnGoToObject");
             document.body.appendChild(btnGoToObject);
 
             txtGoToObject.setAttribute("type", "text");
-            txtGoToObject.style = "Bottom:220px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+            txtGoToObject.style = "Bottom:220px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px; z-index:1000;";
             txtGoToObject.setAttribute("id", "txtGoToObject");
             document.body.appendChild(txtGoToObject);
 
 
             btnLogOut.innerHTML = "Logout";
             btnLogOut.setAttribute("id", "btnLogOut");
-            btnLogOut.style = "Bottom:130px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnLogOut.style = "Bottom:130px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnLogOut.addEventListener ("click", LoutOutURL, false);
             document.body.appendChild(btnLogOut);
 
 
             btnPCVIDToolTips.innerHTML = "PCV IDs";
             btnPCVIDToolTips.setAttribute("id", "btnPCVIDToolTips");
-            btnPCVIDToolTips.style = "Bottom:160px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnPCVIDToolTips.style = "Bottom:160px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnPCVIDToolTips.addEventListener ("click", pcvToolTip, false);
             document.body.appendChild(btnPCVIDToolTips);
         }else{
 
 
             btnGoToObject.innerHTML = "Go To Object";
-            btnGoToObject.style = "Bottom:100px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnGoToObject.style = "Bottom:100px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnGoToObject.addEventListener ("click", GoToObject, false);
             btnGoToObject.setAttribute("id", "btnGoToObject");
             document.body.appendChild(btnGoToObject);
 
             txtGoToObject.setAttribute("type", "text");
-            txtGoToObject.style = "Bottom:130px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+            txtGoToObject.style = "Bottom:130px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px; z-index:1000;";
             txtGoToObject.setAttribute("id", "txtGoToObject");
             document.body.appendChild(txtGoToObject);
 
 
             btnLogOut.innerHTML = "Logout";
             btnLogOut.setAttribute("id", "btnLogOut");
-            btnLogOut.style = "Bottom:70px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnLogOut.style = "Bottom:70px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnLogOut.addEventListener ("click", LoutOutURL, false);
             document.body.appendChild(btnLogOut);
 
 
             btnPCVIDToolTips.innerHTML = "PCV IDs";
             btnPCVIDToolTips.setAttribute("id", "btnPCVIDToolTips");
-            btnPCVIDToolTips.style = "Bottom:40px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnPCVIDToolTips.style = "Bottom:40px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
             btnPCVIDToolTips.addEventListener ("click", pcvToolTip, false);
             document.body.appendChild(btnPCVIDToolTips);
 
             if(isDocumentForm){
                 lblOpgID.setAttribute("type", "label");
                 lblOpgID.innerHTML = "opgID:"
-                lblOpgID.style = "Bottom:160px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600;";;
+                lblOpgID.style = "Bottom:160px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600; z-index:1000;";;
                 lblOpgID.setAttribute("for", "txtOpgID");
                 lblOpgID.setAttribute("id", "lblOpgID");
                 document.body.appendChild(lblOpgID);
@@ -156,43 +156,43 @@ var isDocumentForm = window.location.href.includes("DocumentForm");
 
 
                 txtOpgID.setAttribute("type", "label");
-                txtOpgID.style = "Bottom:160px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+                txtOpgID.style = "Bottom:160px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px; z-index:1000;";
                 txtOpgID.setAttribute("id", "txtOpgID");
                 document.body.appendChild(txtOpgID);
 
                 lblpgeID.setAttribute("type", "label");
                 lblpgeID.innerHTML = "pgeID:"
-                lblpgeID.style = "Bottom:190px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600;";;
+                lblpgeID.style = "Bottom:190px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600; z-index:1000;";;
                 lblpgeID.setAttribute("for", "txtPgeID");
                 lblpgeID.setAttribute("id", "lblpgeID");
                 document.body.appendChild(lblpgeID);
 
                 txtPgeID.setAttribute("type", "label");
-                txtPgeID.style = "Bottom:190px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+                txtPgeID.style = "Bottom:190px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px; z-index:1000;";
                 txtPgeID.setAttribute("id", "txtPgeID");
                 document.body.appendChild(txtPgeID);
 
                 lblomnID.setAttribute("type", "label");
                 lblomnID.innerHTML = "omnID:"
-                lblomnID.style = "Bottom:220px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600;";;
+                lblomnID.style = "Bottom:220px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600; z-index:1000;";;
                 lblomnID.setAttribute("for", "txtomnID");
                 lblomnID.setAttribute("id", "lblomnID");
                 document.body.appendChild(lblomnID);
 
                 txtomnID.setAttribute("type", "label");
-                txtomnID.style = "Bottom:220px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+                txtomnID.style = "Bottom:220px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px; z-index:1000;";
                 txtomnID.setAttribute("id", "txtomnID");
                 document.body.appendChild(txtomnID);
 
                 lblObjGUID.setAttribute("type", "label");
                 lblObjGUID.innerHTML = "objGUID:"
-                lblObjGUID.style = "Bottom:250px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600;";;
+                lblObjGUID.style = "Bottom:250px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600; z-index:1000;";;
                 lblObjGUID.setAttribute("for", "txtObjGUID");
                 lblObjGUID.setAttribute("id", "lblObjGUID");
                 document.body.appendChild(lblObjGUID);
 
                 txtObjGUID.setAttribute("type", "label");
-                txtObjGUID.style = "Bottom:250px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+                txtObjGUID.style = "Bottom:250px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px; z-index:1000;";
                 txtObjGUID.setAttribute("id", "txtObjGUID");
                 document.body.appendChild(txtObjGUID);
             }
