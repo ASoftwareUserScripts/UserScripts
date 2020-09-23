@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Add Button
 // @namespace    http://tampermonkey.net/
-// @version      2.1
-// @description  Making IG a little better :)
+// @version      3.1
+// @description  Making IG and IGX a little better :)
 // @author       QuinnLee
 // @match        https://azshared.agatesoftware.com/*
 // @match        https://shared.agatesoftware.com/*
@@ -13,9 +13,38 @@
 
 
 var txtGoToObject = document.createElement("INPUT");
+var btnAddSave = document.createElement("Button");
+var btnAddDebug = document.createElement("Button");
+var btnQuickLogin = document.createElement("Button");
+var btnGoToObject = document.createElement("Button");
+var btnLogOut = document.createElement("Button");
+var btnPCVIDToolTips = document.createElement("Button");
+var btnShowButtons = document.createElement("Button");
+var lblOpgID = document.createElement("label");
+var txtOpgID = document.createElement("INPUT");
+var lblpgeID = document.createElement("label");
+var txtPgeID = document.createElement("INPUT");
+var lblomnID = document.createElement("label");
+var txtomnID = document.createElement("INPUT");
+var lblObjGUID = document.createElement("label");
+var txtObjGUID = document.createElement("INPUT");
+
+var isIGX = window.location.href.includes('IGX_')
+var isLocalHost = window.location.href.includes("localhost:50263");
+var isDocumentForm = window.location.href.includes("DocumentForm");
 (
 
     function() {
+
+        var color
+        var TextColor
+        if(!isIGX && !isLocalHost){
+            color="hotpink"
+            TextColor="white"
+        }else{
+            color="#8EE3B9"
+            TextColor="black"
+        }
 
         'use strict';
 //         if (!window.location.href.includes('&thx=1138')) {
@@ -26,64 +55,153 @@ var txtGoToObject = document.createElement("INPUT");
             window.location.href = window.location.href.replace('PasswordExpired=1', '');
         };
 
-        var btnShowButtons = document.createElement("Button");
+        
         btnShowButtons.innerHTML = "+";
-        btnShowButtons.style = "Bottom:5px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; border-style: solid; color: white; font-size: 20px; border-color: black; width: 30px; height: 30px; vertical-align: middle; ";
+        btnShowButtons.style = "Bottom:5px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; border-style: solid; color: "+TextColor+"; font-size: 20px; border-color: black; width: 30px; height: 30px; vertical-align: middle; z-index:1000;";
         btnShowButtons.addEventListener ("click", ShowButtons, false);
+        btnShowButtons.setAttribute("id", "btnShowButtons");
         document.body.appendChild(btnShowButtons);
 
-        var btnAddSave = document.createElement("Button");
-        btnAddSave.innerHTML = "Save Page";
-        btnAddSave.style = "Bottom:40px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; visibility:hidden; border-style: solid; color: white; width:100px; border-color: black; height: 25px; font-size: 13.3333px;";
-        btnAddSave.addEventListener ("click", AddSaveURL, false);
-        btnAddSave.setAttribute("id", "btnAddSave");
-        document.body.appendChild(btnAddSave);
 
 
-        var btnAddDebug = document.createElement("Button");
-        if (!window.location.href.includes('&showdebug=1')) {
-            btnAddDebug.innerHTML = "Debug Page";
-        } else{
-            btnAddDebug.innerHTML = "End Debug";
+        if (!isIGX && !isLocalHost) {
+
+            btnAddSave.innerHTML = "Save Page";
+            btnAddSave.style = "Bottom:40px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px; border-color: black; height: 25px; font-size: 13.3333px;";
+            btnAddSave.addEventListener ("click", AddSaveURL, false);
+            btnAddSave.setAttribute("id", "btnAddSave");
+            document.body.appendChild(btnAddSave);
+
+
+
+            if (!window.location.href.includes('&showdebug=1')) {
+                btnAddDebug.innerHTML = "Debug Page";
+            } else{
+                btnAddDebug.innerHTML = "End Debug";
+            }
+            btnAddDebug.setAttribute("tag", "btnIGOverlay");
+            btnAddDebug.style = "Bottom:70px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px; border-color: black; height: 25px; font-size: 13.3333px;";
+            btnAddDebug.addEventListener ("click", AddDebugURL, false);
+            btnAddDebug.setAttribute("id", "btnAddDebug");
+            document.body.appendChild(btnAddDebug);
+
+
+            btnQuickLogin.innerHTML = "Quick Login";
+            btnQuickLogin.setAttribute("id", "btnQuickLogin");
+            btnQuickLogin.style = "Bottom:100px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnQuickLogin.addEventListener ("click", QuickLoginURL, false);
+            document.body.appendChild(btnQuickLogin);
+
+
+            btnGoToObject.innerHTML = "Go To Object";
+            btnGoToObject.style = "Bottom:190px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnGoToObject.addEventListener ("click", GoToObject, false);
+            btnGoToObject.setAttribute("id", "btnGoToObject");
+            document.body.appendChild(btnGoToObject);
+
+            txtGoToObject.setAttribute("type", "text");
+            txtGoToObject.style = "Bottom:220px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+            txtGoToObject.setAttribute("id", "txtGoToObject");
+            document.body.appendChild(txtGoToObject);
+
+
+            btnLogOut.innerHTML = "Logout";
+            btnLogOut.setAttribute("id", "btnLogOut");
+            btnLogOut.style = "Bottom:130px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnLogOut.addEventListener ("click", LoutOutURL, false);
+            document.body.appendChild(btnLogOut);
+
+
+            btnPCVIDToolTips.innerHTML = "PCV IDs";
+            btnPCVIDToolTips.setAttribute("id", "btnPCVIDToolTips");
+            btnPCVIDToolTips.style = "Bottom:160px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnPCVIDToolTips.addEventListener ("click", pcvToolTip, false);
+            document.body.appendChild(btnPCVIDToolTips);
+        }else{
+
+
+            btnGoToObject.innerHTML = "Go To Object";
+            btnGoToObject.style = "Bottom:100px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnGoToObject.addEventListener ("click", GoToObject, false);
+            btnGoToObject.setAttribute("id", "btnGoToObject");
+            document.body.appendChild(btnGoToObject);
+
+            txtGoToObject.setAttribute("type", "text");
+            txtGoToObject.style = "Bottom:130px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+            txtGoToObject.setAttribute("id", "txtGoToObject");
+            document.body.appendChild(txtGoToObject);
+
+
+            btnLogOut.innerHTML = "Logout";
+            btnLogOut.setAttribute("id", "btnLogOut");
+            btnLogOut.style = "Bottom:70px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnLogOut.addEventListener ("click", LoutOutURL, false);
+            document.body.appendChild(btnLogOut);
+
+
+            btnPCVIDToolTips.innerHTML = "PCV IDs";
+            btnPCVIDToolTips.setAttribute("id", "btnPCVIDToolTips");
+            btnPCVIDToolTips.style = "Bottom:40px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
+            btnPCVIDToolTips.addEventListener ("click", pcvToolTip, false);
+            document.body.appendChild(btnPCVIDToolTips);
+
+            if(isDocumentForm){
+                lblOpgID.setAttribute("type", "label");
+                lblOpgID.innerHTML = "opgID:"
+                lblOpgID.style = "Bottom:160px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600;";;
+                lblOpgID.setAttribute("for", "txtOpgID");
+                lblOpgID.setAttribute("id", "lblOpgID");
+                document.body.appendChild(lblOpgID);
+
+
+
+                txtOpgID.setAttribute("type", "label");
+                txtOpgID.style = "Bottom:160px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+                txtOpgID.setAttribute("id", "txtOpgID");
+                document.body.appendChild(txtOpgID);
+
+                lblpgeID.setAttribute("type", "label");
+                lblpgeID.innerHTML = "pgeID:"
+                lblpgeID.style = "Bottom:190px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600;";;
+                lblpgeID.setAttribute("for", "txtPgeID");
+                lblpgeID.setAttribute("id", "lblpgeID");
+                document.body.appendChild(lblpgeID);
+
+                txtPgeID.setAttribute("type", "label");
+                txtPgeID.style = "Bottom:190px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+                txtPgeID.setAttribute("id", "txtPgeID");
+                document.body.appendChild(txtPgeID);
+
+                lblomnID.setAttribute("type", "label");
+                lblomnID.innerHTML = "omnID:"
+                lblomnID.style = "Bottom:220px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600;";;
+                lblomnID.setAttribute("for", "txtomnID");
+                lblomnID.setAttribute("id", "lblomnID");
+                document.body.appendChild(lblomnID);
+
+                txtomnID.setAttribute("type", "label");
+                txtomnID.style = "Bottom:220px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+                txtomnID.setAttribute("id", "txtomnID");
+                document.body.appendChild(txtomnID);
+
+                lblObjGUID.setAttribute("type", "label");
+                lblObjGUID.innerHTML = "objGUID:"
+                lblObjGUID.style = "Bottom:250px;right:110px; position:fixed;visibility:hidden; width:98px;border-color: black; height: 25px; text-align: right; font-size: 13.3333px; padding-top:7px; font-weight:600;";;
+                lblObjGUID.setAttribute("for", "txtObjGUID");
+                lblObjGUID.setAttribute("id", "lblObjGUID");
+                document.body.appendChild(lblObjGUID);
+
+                txtObjGUID.setAttribute("type", "label");
+                txtObjGUID.style = "Bottom:250px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
+                txtObjGUID.setAttribute("id", "txtObjGUID");
+                document.body.appendChild(txtObjGUID);
+            }
+
         }
-        btnAddDebug.setAttribute("tag", "btnIGOverlay");
-        btnAddDebug.style = "Bottom:70px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; visibility:hidden; border-style: solid; color: white; width:100px; border-color: black; height: 25px; font-size: 13.3333px;";
-        btnAddDebug.addEventListener ("click", AddDebugURL, false);
-        btnAddDebug.setAttribute("id", "btnAddDebug");
-        document.body.appendChild(btnAddDebug);
 
-        var btnQuickLogin = document.createElement("Button");
-        btnQuickLogin.innerHTML = "Quick Login";
-        btnQuickLogin.setAttribute("id", "btnQuickLogin");
-        btnQuickLogin.style = "Bottom:100px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
-        btnQuickLogin.addEventListener ("click", QuickLoginURL, false);
-        document.body.appendChild(btnQuickLogin);
 
-        var btnGoToObject = document.createElement("Button");
-        btnGoToObject.innerHTML = "Go To Object";
-        btnGoToObject.style = "Bottom:190px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
-        btnGoToObject.addEventListener ("click", GoToObject, false);
-        btnGoToObject.setAttribute("id", "btnGoToObject");
-        document.body.appendChild(btnGoToObject);
 
-        txtGoToObject.setAttribute("type", "text");
-        txtGoToObject.style = "Bottom:220px;right:5px; position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px;";
-        txtGoToObject.setAttribute("id", "txtGoToObject");
-        document.body.appendChild(txtGoToObject);
-
-        var btnLogOut = document.createElement("Button");
-        btnLogOut.innerHTML = "Logout";
-        btnLogOut.setAttribute("id", "btnLogOut");
-        btnLogOut.style = "Bottom:130px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px; Display:;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
-        btnLogOut.addEventListener ("click", LoutOutURL, false);
-        document.body.appendChild(btnLogOut);
-
-        var btnPCVIDToolTips = document.createElement("Button");
-        btnPCVIDToolTips.innerHTML = "PCV IDs";
-        btnPCVIDToolTips.setAttribute("id", "btnPCVIDToolTips");
-        btnPCVIDToolTips.style = "Bottom:160px;right:5px;position:fixed;background-Color:hotpink;border-radius: 5px;visibility:hidden; border-style: solid; color: white; width:100px;border-color: black; height: 25px; font-size: 13.3333px;";
-        btnPCVIDToolTips.addEventListener ("click", pcvToolTip, false);
-        document.body.appendChild(btnPCVIDToolTips);
+        
     }
 
 
@@ -94,7 +212,7 @@ var txtGoToObject = document.createElement("INPUT");
 
 function ShowButtons() {
 
-    var x = document.getElementById("btnAddSave").style.visibility;
+    var x = document.getElementById("btnGoToObject").style.visibility;
 
 
     if (x == "visible"){
@@ -105,9 +223,36 @@ function ShowButtons() {
         console.log(2);
     }
 
-    document.getElementById("btnAddSave").style.visibility = x;
-    document.getElementById("btnAddDebug").style.visibility = x;
-    document.getElementById("btnQuickLogin").style.visibility = x;
+    if(!isIGX && !isLocalHost){
+        document.getElementById("btnAddSave").style.visibility = x;
+        document.getElementById("btnAddDebug").style.visibility = x;
+        document.getElementById("btnQuickLogin").style.visibility = x;
+
+    }else if(isDocumentForm){
+
+        var opgID = document.getElementById("dataDocumentPage_0__opgID").value;
+        var pgeID = document.getElementById("dataPage_0__pgeID").value;
+        var omnID = document.getElementById("dataPage_0__omnID").value;
+        var objGUID = document.getElementById("DocumentGUID").value;
+
+
+        document.getElementById("lblOpgID").style.visibility = x;
+        document.getElementById("txtOpgID").style.visibility = x;
+        document.getElementById("txtOpgID").value = opgID;
+
+        document.getElementById("lblpgeID").style.visibility = x;
+        document.getElementById("txtPgeID").style.visibility = x;
+        document.getElementById("txtPgeID").value = pgeID;
+
+        document.getElementById("lblomnID").style.visibility = x;
+        document.getElementById("txtomnID").style.visibility = x;
+        document.getElementById("txtomnID").value = omnID;
+
+        document.getElementById("lblObjGUID").style.visibility = x;
+        document.getElementById("txtObjGUID").style.visibility = x;
+        document.getElementById("txtObjGUID").value = objGUID;
+
+    }
     document.getElementById("btnGoToObject").style.visibility = x;
     document.getElementById("txtGoToObject").style.visibility = x;
     document.getElementById("btnLogOut").style.visibility = x;
@@ -140,13 +285,24 @@ function QuickLoginURL() {
 function LoutOutURL() {
     var pathArray = window.location.pathname.split('/');
     var secondLevelLocation = pathArray[1];
-    window.location.href = "/" + secondLevelLocation +"/login2.aspx";
+    if(isLocalHost){
+        window.location.href = "";
+    }else{
+        window.location.href = "/" + secondLevelLocation;
+    }
 }
 
 function GoToObject() {
     var pathArray = window.location.pathname.split('/');
     var secondLevelLocation = pathArray[1];
-    window.location.href = "/" + secondLevelLocation +"/Menu_Object2.aspx?objID="+txtGoToObject.value;
+    if(isLocalHost){
+        window.location.href = "/Menu_Object2.aspx?objID="+txtGoToObject.value;
+    }else if(isIGX){
+        window.location.href = "/" + secondLevelLocation +"/DocumentFramework?documentGUID="+txtGoToObject.value;
+    }else{
+        window.location.href = "/" + secondLevelLocation +"/Menu_Object2.aspx?objID="+txtGoToObject.value;
+    }
+    
 }
 
 function pcvToolTip() {
