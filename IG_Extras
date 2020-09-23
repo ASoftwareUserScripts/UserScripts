@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add Button
 // @namespace    http://tampermonkey.net/
-// @version      3.4
+// @version      3.5
 // @description  Making IG and IGX a little better :)
 // @author       QuinnLee
 // @match        https://azshared.agatesoftware.com/*
@@ -20,6 +20,7 @@ var btnGoToObject = document.createElement("Button");
 var btnLogOut = document.createElement("Button");
 var btnPCVIDToolTips = document.createElement("Button");
 var btnShowButtons = document.createElement("Button");
+var btnEditForm = document.createElement("Button");
 var lblOpgID = document.createElement("label");
 var txtOpgID = document.createElement("INPUT");
 var lblpgeID = document.createElement("label");
@@ -55,7 +56,7 @@ var isDocumentForm = window.location.href.includes("DocumentForm");
             window.location.href = window.location.href.replace('PasswordExpired=1', '');
         };
 
-        
+
         btnShowButtons.innerHTML = "+";
         btnShowButtons.style = "Bottom:5px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px; border-style: solid; color: "+TextColor+"; font-size: 20px; border-color: black; width: 30px; height: 30px; vertical-align: middle; z-index:1000;";
         btnShowButtons.addEventListener ("click", ShowButtons, false);
@@ -195,13 +196,20 @@ var isDocumentForm = window.location.href.includes("DocumentForm");
                 txtObjGUID.style = "Bottom:250px;right:5px; position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:98px;border-color: black; height: 25px; text-align: center; font-size: 13.3333px; z-index:1000;";
                 txtObjGUID.setAttribute("id", "txtObjGUID");
                 document.body.appendChild(txtObjGUID);
+
+
+                btnEditForm.innerHTML = "Edit Form";
+                btnEditForm.setAttribute("id", "btnEditForm");
+                btnEditForm.style = "Bottom:280px;right:5px;position:fixed;background-Color:"+color+";border-radius: 5px;visibility:hidden; border-style: solid; color: "+TextColor+"; width:100px;border-color: black; height: 25px; font-size: 13.3333px; z-index:1000;";
+                btnEditForm.addEventListener ("click", EditForm, false);
+                document.body.appendChild(btnEditForm);
             }
 
         }
 
 
 
-        
+
     }
 
 
@@ -251,6 +259,8 @@ function ShowButtons() {
         document.getElementById("lblObjGUID").style.visibility = x;
         document.getElementById("txtObjGUID").style.visibility = x;
         document.getElementById("txtObjGUID").value = objGUID;
+
+        document.getElementById("btnEditForm").style.visibility = x;
 
     }
     document.getElementById("btnGoToObject").style.visibility = x;
@@ -302,7 +312,22 @@ function GoToObject() {
     }else{
         window.location.href = "/" + secondLevelLocation +"/Menu_Object2.aspx?objID="+txtGoToObject.value;
     }
-    
+
+}
+
+
+function EditForm() {
+
+    var pgeGUID = document.getElementById("dataPage_0__pgeGUID").value;
+    var omnID = document.getElementById("dataPage_0__omnID").value;
+
+    var pathArray = window.location.pathname.split('/');
+    var secondLevelLocation = pathArray[1];
+
+    window.open("/FormBuilder/Index?pageGUID="+ pgeGUID + "&omnID=" + omnID,'_blank');
+
+
+
 }
 
 function pcvToolTip() {
