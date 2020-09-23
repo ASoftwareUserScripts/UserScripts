@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Add Button
 // @namespace    http://tampermonkey.net/
-// @version      3.2
+// @version      3.3
 // @description  Making IG and IGX a little better :)
 // @author       QuinnLee
 // @match        https://azshared.agatesoftware.com/*
@@ -296,7 +296,7 @@ function GoToObject() {
     var pathArray = window.location.pathname.split('/');
     var secondLevelLocation = pathArray[1];
     if(isLocalHost){
-        window.location.href = "/Menu_Object2.aspx?objID="+txtGoToObject.value;
+        window.location.href = "//DocumentFramework?documentGUID="+txtGoToObject.value;
     }else if(isIGX){
         window.location.href = "/" + secondLevelLocation +"/DocumentFramework?documentGUID="+txtGoToObject.value;
     }else{
