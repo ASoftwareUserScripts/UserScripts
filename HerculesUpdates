@@ -1,0 +1,35 @@
+// ==UserScript==
+// @name         Hercules Updates
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Fix some herc stuff one thing at a Time
+// @author       You
+// @match        https://hercules.agatesoftware.com/*
+// @grant        none
+// ==/UserScript==
+
+function addGlobalStyle(css) {
+    var head, style;
+    head = document.getElementsByTagName('head')[0];
+    if (!head) { return; }
+    style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = css;
+    head.appendChild(style);
+};
+
+addGlobalStyle('.projecTraxRow { min-height: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important; }');
+addGlobalStyle('.form-control { height: 100% !important; padding-top: 3px !important; padding-bottom: 3px !important; border-radius:3px !important; }');
+addGlobalStyle('.DT-BodyRow { min-height: 0px !important; padding-top: 10px !important; padding-bottom: 5px !important; }');
+addGlobalStyle('.col-sm-3 { white-space: nowrap !important;    overflow: hidden !important;    text-overflow: ellipsis !important; }');
+addGlobalStyle('.DT-HeaderRow  { padding-top: 5px !important; }');
+addGlobalStyle('.DT-FilterColumn  { padding-Bottom: 0px !important; }');
+addGlobalStyle('.input-group-addon  { padding: 3px !important; border-radius:3px !important; }');
+addGlobalStyle('.btn  { padding: 3px !important; border-radius:3px !important; }');
+addGlobalStyle('.taskDropdown > ul.dropdown-menu:before, .taskDropdown > ul.dropdown-menu:after  { border:none !important; }');
+addGlobalStyle('.navbar-nav > li.dropdown > ul.dropdown-menu:before, .navbar-nav > li.dropdown > ul.dropdown-menu:after  { border:none !important; }');
+addGlobalStyle('.taskDropdown > ul.dropdown-menu  { margin-Top: 0px !important; }');
+addGlobalStyle('.navbar-nav > li.dropdown > ul.dropdown-menu  { margin-Top: 0px !important; }');
+addGlobalStyle('.dropdown  { padding: 0px !important; }');
+addGlobalStyle('.fa-plus  { padding: 10px 0px !important; }');
+addGlobalStyle('.igx-search-icon  { padding: 10px 0px !important; }');
